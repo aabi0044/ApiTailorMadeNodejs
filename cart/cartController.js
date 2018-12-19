@@ -18,8 +18,6 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
-    console.log(req.params.id);
-
     Cart.findById(req.params.id, (err, doc) => {
         if (err) {
             console.log(err.message);
@@ -32,13 +30,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    console.log(req.body.orderArray);
+    
     let c = new Cart({
         orderArray: req.body.orderArray,
         date: Date.now(),
-        totalActual: Number,
-        totalSale: Number,
-        totalSave: Number
+        totalActual: req.body.totalActual,
+        totalSale: req.body.totalSale,
+        totalSave: req.body.totalSave
     })
 
     c.save((err, doc) => {
@@ -54,8 +52,6 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
 
-    console.log(req.params.id);
-
     Cart.findByIdAndRemove(req.params.id, (err, resp) => {
         if (resp) {
             console.log(resp);
@@ -67,22 +63,24 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    let c = new Cart({
+    
+    let c = {
+        _id: req.body.id,
         orderArray: req.body.orderArray,
         date: Date.now(),
-        totalActual: Number,
-        totalSale: Number,
-        totalSave: Number
-    })
-    Cart.findByIdAndUpdate(req.params.id, {
-        $set: c
-    }, (err, doc) => {
+        totalActual: req.body.totalActual,
+        totalSale: req.body.totalSale,
+        totalSave: req.body.totalSave
+    };
+    
+    Cart.findOneAndUpdate(req.params.id, { $set: c }, (err, doc) =>{
         if (err) {
             console.log(err);
         } else {
-            console.log("updated");
+            console.log(doc);
             res.send(doc);
         }
     })
 })
+
 module.exports = router;

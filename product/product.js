@@ -9,4 +9,4 @@ var productSchema = mongoose.Schema({
 
 var Product = mongoose.model('products', productSchema);
 
-module.exports = {Product};
+module.exports = { Product };

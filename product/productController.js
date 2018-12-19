@@ -18,8 +18,6 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
-    console.log(req.params.id);
-
     Product.findById(req.params.id, (err, doc) => {
         if (err) {
             console.log(err.message);
@@ -32,6 +30,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res)=> {
+    
     let p = new Product({
         name: req.body.name,
         price: req.body.price,
@@ -45,14 +44,12 @@ router.post('/', (req, res)=> {
             console.log(doc);
             res.send(doc);
         }
-    })
+    });
 
-})
+});
 
 router.delete('/:id', (req, res) => {
 
-    console.log(req.params.id);
-    
     Product.findByIdAndRemove(req.params.id, (err, resp)=> {
         if (resp) {
             console.log(resp);
@@ -60,14 +57,17 @@ router.delete('/:id', (req, res) => {
         }else if (err) {
             console.log(err.message);
         }
-    })
-})
+    });
+});
+
 router.put('/:id',(req,res)=>{
-    let p = new Product({
+
+    let p = {
         name: req.body.name,
         price: req.body.price,
         date: Date.now()
-    });
+    };
+
     Product.findByIdAndUpdate(req.params.id, {$set:p} ,(err,doc)=>{
         if(err){
             console.log(err);
@@ -76,7 +76,8 @@ router.put('/:id',(req,res)=>{
             console.log("updated");
             res.send(doc);
         }
-    })
-})
+    });
+});
+
 module.exports = router;
 
