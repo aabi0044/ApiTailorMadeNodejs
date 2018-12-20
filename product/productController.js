@@ -73,7 +73,7 @@ router.put('/:id',(req,res)=>{
             console.log(err);
         }
         else{
-            console.log("updated");
+            console.log(doc);
             res.send(doc);
         }
     });

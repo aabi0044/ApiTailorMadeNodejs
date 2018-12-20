@@ -53,11 +53,11 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
 
     Cart.findByIdAndRemove(req.params.id, (err, resp) => {
-        if (resp) {
+        if (err) {
+            console.log(err.message);
+        } else {
             console.log(resp);
             res.send(resp)
-        } else if (err) {
-            console.log(err.message);
         }
     })
 });
