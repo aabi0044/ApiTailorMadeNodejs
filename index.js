@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { mongoose } = require('./db.js');
@@ -8,15 +9,11 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}) );
-
-app.use('/product', productController);
-app.use('/cart', cartController);
-
-app.all('/', (req, res) => {
-    res.send('Homepage');
-});
+app.use(cors({origin: 'http://localhost:4200'}));
 
 app.listen(port, ()=> {
     console.log('Listening on port 3000');
 })
+
+app.use('/product', productController);
+app.use('/cart', cartController);
