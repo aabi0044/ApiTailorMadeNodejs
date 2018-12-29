@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
 var cartSchema = mongoose.Schema({
+    
     orderArray: Array,
-    date: { type: Date, default: Date.now },
+    date: { type: Date.UTC()},
     totalActual: Number,
     totalSale: Number,
-    totalSave: Number
+    totalSave: Number,
+    
 })
 
 var Cart = mongoose.model('cart', cartSchema);

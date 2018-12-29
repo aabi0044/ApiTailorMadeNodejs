@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-
+console.log(req.params.id)
     Cart.findById(req.params.id, (err, doc) => {
         if (err) {
             console.log(err.message);
@@ -32,6 +32,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     
     let c = new Cart({
+        
         orderArray: req.body.orderArray,
         date: Date.now(),
         totalActual: req.body.totalActual,
@@ -65,9 +66,10 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     
     let c = {
+    
         _id: req.body.id,
         orderArray: req.body.orderArray,
-        date: Date.now(),
+        date: req.body.date,
         totalActual: req.body.totalActual,
         totalSale: req.body.totalSale,
         totalSave: req.body.totalSave
@@ -82,5 +84,7 @@ router.put('/:id', (req, res) => {
         }
     })
 })
+
+
 
 module.exports = router;
