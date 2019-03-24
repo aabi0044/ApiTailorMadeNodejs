@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
-const { Product } = require('./product');
+const { users } = require('./users');
 
 router.get('/', (req, res) => {
 
-    Product.find((err, doc)=> {
+    users.find((err, doc)=> {
         if (err) {
             console.log(err.message);
         }else if (doc) {
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
-    Product.findById(req.params.id, (err, doc) => {
+    users.findById(req.params.id, (err, doc) => {
         if (err) {
             console.log(err.message);
         } else if (doc) {
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res)=> {
     
-    let p = new Product({
+    let p = new users({
         name: req.body.name,
         price: req.body.price,
         quantity:req.body.quantity,
@@ -51,7 +51,7 @@ router.post('/', (req, res)=> {
 
 router.delete('/:id', (req, res) => {
 
-    Product.findByIdAndRemove(req.params.id, (err, resp)=> {
+    users.findByIdAndRemove(req.params.id, (err, resp)=> {
         if (resp) {
             console.log(resp);
             res.send(resp)
@@ -70,7 +70,7 @@ router.put('/:id',(req,res)=>{
         date: Date.now()
     };
 
-    Product.findByIdAndUpdate(req.params.id, {$set:p} ,(err,doc)=>{
+    users.findByIdAndUpdate(req.params.id, {$set:p} ,(err,doc)=>{
         if(err){
             console.log(err);
         }
@@ -82,4 +82,3 @@ router.put('/:id',(req,res)=>{
 });
 
 module.exports = router;
-

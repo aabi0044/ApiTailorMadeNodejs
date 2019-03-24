@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
+
 const { Cart } = require('./cart');
 
 router.get('/', (req, res) => {
@@ -29,15 +30,18 @@ console.log(req.params.id)
 
 });
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
+
+    console.log(req.body);
     
     let c = new Cart({
         
         orderArray: req.body.orderArray,
-        date: Date.now(),
+        date:req.body.date,
         totalActual: req.body.totalActual,
         totalSale: req.body.totalSale,
-        totalSave: req.body.totalSave
+        totalSave: req.body.totalSave,
+        totalQuantity:req.body.totalQuantity
     })
 
     c.save((err, doc) => {
@@ -72,7 +76,8 @@ router.put('/:id', (req, res) => {
         date: req.body.date,
         totalActual: req.body.totalActual,
         totalSale: req.body.totalSale,
-        totalSave: req.body.totalSave
+        totalSave: req.body.totalSave,
+        totalQuantity:req.body.totalQuantity
     };
     
     Cart.findOneAndUpdate(req.params.id, { $set: c }, (err, doc) =>{
