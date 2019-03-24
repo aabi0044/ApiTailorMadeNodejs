@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { mongoose } = require('./db.js');
 const productController = require('./product/productController');
-const cartController = require('./cart/cartController');
+const usersController = require('./users/usersController');
 
 const app = express();
 const port = 3000;
@@ -16,4 +16,4 @@ app.listen(port, ()=> {
 })
 
 app.use('/product', productController);
-app.use('/cart', cartController);
+app.use('/users', usersController);
