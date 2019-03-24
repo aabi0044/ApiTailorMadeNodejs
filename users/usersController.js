@@ -32,10 +32,23 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res)=> {
     
     let p = new users({
+           
         name: req.body.name,
-        price: req.body.price,
-        quantity:req.body.quantity,
-        date: Date.now()
+        mobile:req.body.mobile,
+        neck: req.body.neck,
+        shoulder:req.body.shoulder,
+        hlafChest: req.body.hlafChest,
+        fullChest: req.body.fullChest,
+        sleeveLength: req.body.sleeveLength,
+        kameezLength: req.body.kameezLength,
+        kameezWidth: req.body.kameezWidth,
+        wristWidth: req.body.wristWidth,
+        shalwarInseam:Nureq.body.shalwarInseam,
+        shalwarLength:req.body.shalwarLength,
+        shalwarPancha:req.body.shalwarPancha,
+        noOfOrders:req.body.noOfOrders,
+        noOfSuits:req.body.noOfSuits,
+        dateofjoining: Date.now()
     })
 
     p.save((err, doc) => {
@@ -65,9 +78,21 @@ router.put('/:id',(req,res)=>{
 
     let p = {
         name: req.body.name,
-        price: req.body.price,
-        quantity:req.body.quantity,
-        date: Date.now()
+        mobile:req.body.mobile,
+        neck: req.body.neck,
+        shoulder:req.body.shoulder,
+        hlafChest: req.body.hlafChest,
+        fullChest: req.body.fullChest,
+        sleeveLength: req.body.sleeveLength,
+        kameezLength: req.body.kameezLength,
+        kameezWidth: req.body.kameezWidth,
+        wristWidth: req.body.wristWidth,
+        shalwarInseam:Nureq.body.shalwarInseam,
+        shalwarLength:req.body.shalwarLength,
+        shalwarPancha:req.body.shalwarPancha,
+        noOfOrders:req.body.noOfOrders,
+        noOfSuits:req.body.noOfSuits,
+        dateofjoining: Date.now()
     };
 
     users.findByIdAndUpdate(req.params.id, {$set:p} ,(err,doc)=>{
@@ -80,5 +105,6 @@ router.put('/:id',(req,res)=>{
         }
     });
 });
+
 
 module.exports = router;

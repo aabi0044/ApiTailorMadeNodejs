@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 var usersSchema = mongoose.Schema({
     name: String,
+    mobile:Number,
     neck: Number,
     shoulder:Number,
     hlafChest: Number,
@@ -13,6 +14,8 @@ var usersSchema = mongoose.Schema({
     shalwarInseam:Number,
     shalwarLength:Number,
     shalwarPancha:Number,
+    noOfOrders:Number,
+    noOfSuits:Number,
     dateofjoining: { type : Date, default: Date.now },
 })
 
