@@ -43,14 +43,14 @@ router.post('/', (req, res)=> {
         kameezLength: req.body.kameezLength,
         kameezWidth: req.body.kameezWidth,
         wristWidth: req.body.wristWidth,
-        shalwarInseam:Nureq.body.shalwarInseam,
+        shalwarInseam:req.body.shalwarInseam,
         shalwarLength:req.body.shalwarLength,
         shalwarPancha:req.body.shalwarPancha,
         noOfOrders:req.body.noOfOrders,
         noOfSuits:req.body.noOfSuits,
-        dateofjoining: Date.now()
+        dateofjoining: req.body.dateofjoining
     })
-
+console.log(p);
     p.save((err, doc) => {
         if (err) {
             console.log(err.message);
@@ -64,7 +64,7 @@ router.post('/', (req, res)=> {
 
 router.delete('/:id', (req, res) => {
 
-    users.findByIdAndRemove(req.params.id, (err, resp)=> {
+    users.findOneAndRemove(req.params.id, (err, resp)=> {
         if (resp) {
             console.log(resp);
             res.send(resp)
@@ -87,7 +87,7 @@ router.put('/:id',(req,res)=>{
         kameezLength: req.body.kameezLength,
         kameezWidth: req.body.kameezWidth,
         wristWidth: req.body.wristWidth,
-        shalwarInseam:Nureq.body.shalwarInseam,
+        shalwarInseam:req.body.shalwarInseam,
         shalwarLength:req.body.shalwarLength,
         shalwarPancha:req.body.shalwarPancha,
         noOfOrders:req.body.noOfOrders,

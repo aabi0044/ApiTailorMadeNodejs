@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/cartmean', (err) => {
+mongoose.connect('mongodb://localhost:27017/tailorMade', (err) => {
     if (err) {
         console.log(err.message);
     }else{

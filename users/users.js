@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var usersSchema = mongoose.Schema({
     name: String,
-    mobile:Number,
+    mobile:String,
     neck: Number,
     shoulder:Number,
     hlafChest: Number,
