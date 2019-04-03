@@ -47,8 +47,10 @@ router.post('/', (req, res)=> {
         shalwarLength:req.body.shalwarLength,
         shalwarPancha:req.body.shalwarPancha,
         noOfOrders:req.body.noOfOrders,
-        noOfSuits:req.body.noOfSuits,
-        dateofjoining: req.body.dateofjoining
+       
+        dateofjoining: req.body.dateofjoining,
+        paid:req.body.paid,
+        remaining:req.body.remaining
     })
 console.log(p);
     p.save((err, doc) => {
@@ -91,7 +93,9 @@ router.put('/:id',(req,res)=>{
         shalwarLength:req.body.shalwarLength,
         shalwarPancha:req.body.shalwarPancha,
         noOfOrders:req.body.noOfOrders,
-        noOfSuits:req.body.noOfSuits,
+       
+        paid:req.body.paid,
+        remaining:req.body.remaining,
         dateofjoining: Date.now()
     };
 

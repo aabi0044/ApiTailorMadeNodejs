@@ -15,7 +15,8 @@ var usersSchema = mongoose.Schema({
     shalwarLength:Number,
     shalwarPancha:Number,
     noOfOrders:Number,
-    noOfSuits:Number,
+    paid:Number,
+    remining:Number,
     dateofjoining: { type : Date, default: Date.now },
 })
 

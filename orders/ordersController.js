@@ -49,7 +49,10 @@ router.post('/', (req, res)=> {
         customerMobile: req.body.customerMobile,
         status:req.body.status,
         deliveryDate: req.body.deliveryDate,
-        creationDate:req.body.creationDate
+        creationDate:req.body.creationDate,
+        paid:req.body.paid,
+        remaining:req.body.remaining,
+        orderNo:req.body.orderNo
         
         // date: Date.now()
     })
@@ -98,7 +101,9 @@ router.put('/:id',(req,res)=>{
         status:'delivered',
         deliveryDate: req.body.deliveryDate,
         creationDate:req.body.creationDate,
-        delivered:req.body.delivered
+        delivered:req.body.delivered,
+        paid:req.body.paid,
+        remaining:req.body.remaining
     };
 
     Order.findByIdAndUpdate(req.params.id, {$set:p} ,(err,doc)=>{

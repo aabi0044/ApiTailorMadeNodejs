@@ -23,6 +23,9 @@ var orderSchema = mongoose.Schema({
       deliveryDate: String,
       creationDate:Number,
       delivered:String,
+      paid:Number,
+      remaining:Number,
+      orderNo:Number
     //   neck:Number,
     //   shoulder:Number,
     //   hlafChest: Number,
