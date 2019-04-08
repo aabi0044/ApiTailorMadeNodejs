@@ -66,7 +66,7 @@ console.log(p);
 
 router.delete('/:id', (req, res) => {
 
-    users.findOneAndRemove(req.params.id, (err, resp)=> {
+    users.findByIdAndDelete(req.params.id, (err, resp)=> {
         if (resp) {
             console.log(resp);
             res.send(resp)
