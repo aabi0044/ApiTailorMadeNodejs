@@ -96,7 +96,7 @@ router.put('/:id',(req,res)=>{
        
         paid:req.body.paid,
         remaining:req.body.remaining,
-        dateofjoining: Date.now()
+        dateofjoining: req.body.dateofjoining
     };
 
     users.findByIdAndUpdate(req.params.id, {$set:p} ,(err,doc)=>{

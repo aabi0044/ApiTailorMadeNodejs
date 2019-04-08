@@ -70,7 +70,7 @@ router.post('/', (req, res)=> {
 
 router.delete('/:id', (req, res) => {
 
-    Order.findOneAndRemove(req.params.id, (err, resp)=> {
+    Order.findByIdAndDelete(req.params.id, (err, resp)=> {
         if (resp) {
             console.log(resp);
             res.send(resp)
