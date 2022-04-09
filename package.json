@@ -13,7 +13,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "http": "0.0.0",
-    "moment": "^2.23.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.23",
     "mongoose": "^5.4.0",
     "mongoose-timezone": "^1.1.0"
